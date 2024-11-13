@@ -111,7 +111,7 @@ Osoba chcąca zakupić produkt na aukcji.
 4. System zamieszcza informację o przebiciu kwoty oraz podaje aktualną cenę oferty.
 **Scenariusze alternatywne:** 
 
-3.A. Podano mniejszą lub równą kwotę do aktualnej oferty.
+3.A. Podano mniejszą kwotę od minimalnej, potrzebnej do przebicia aktualnej oferty.
 * 3.A.1. System informuje o błędnej cenie przebicia.
 * 3.A.2. Przejdź do kroku 1.
 
@@ -135,14 +135,14 @@ Osoba chcąca zakupić produkt na aukcji.
 
 **Scenariusz główny:**
 1. System oczekuje na przekazanie pieniędzy.
-2. [Kupujący](#ac2) wysyła daną kwotę za produkt do [Sprzedający](#ac1).
+2. [Kupujący](#ac2) wysyła daną kwotę za produkt.
 3. System weryfikuje zgodność przesłanej kwoty z zadeklarowaną kwtotą z aukcji.
-4. System potwierdza operację transakcji i przypisuje [Kupujący](#ac2) jako nowego właściciela.
+4. System potwierdza operację transakcji i przypisuje zwycięzcę aukcji jako nowego właściciela.
 **Scenariusze alternatywne:** 
 
 3.A. Wysłano inną kwotę od oczekiwanej.
 * 3.A.1. System informuje o błędnej kwocie przekazanych pieniędzy.
-* 3.A.2. System zwraca pieniądze do [Kupujący](#ac2).
+* 3.A.2. System zwraca pieniądze kupującemu.
 * 3.A.3. Przejdź do kroku 1.
 
 
