@@ -12,7 +12,7 @@ Specyfikacja wymagań funkcjonalnych w ramach informatyzacji procesu sprzedaży 
 
 **Aktorzy:** [Sprzedający](#ac1), [Kupujący](#ac2)
 
-**Opis:** Proces biznesowy opisujący sprzedaż za pomocą mechanizmu aukcyjnego. |
+**Opis:** Proces biznesowy opisujący sprzedaż za pomocą mechanizmu aukcyjnego.
 
 **Scenariusz główny:**
 1. [Sprzedający](#ac1) wystawia produkt na aukcję. ([UC1](#uc1))
@@ -85,19 +85,18 @@ Osoba chcąca zakupić produkt na aukcji.
 **Aktorzy:** [Sprzedający](#ac1), [Kupujący](#ac2)
 
 **Scenariusz główny:**
-1. System usuwa produkt z aukcji.
-2. System prosi o podanie danych wysyłki.
-3. [Kupujący](#ac2) podaje dane wysyłki.
-4. System weryfikuje poprawność danych.
-5. [Sprzedający](#ac1) wysyła produkt na dany adres.
-6. System czeka na potwierdzenie otrzymania produktu.
-7. [Kupujący](#ac2) potwierdza otrzymanie produktu.
-8. System informuje o pomyślnym przekazaniu należności.
+1. System prosi o podanie danych wysyłki.
+2. [Kupujący](#ac2) podaje dane wysyłki.
+3. System weryfikuje poprawność danych.
+4. [Sprzedający](#ac1) wysyła produkt na dany adres.
+5. System czeka na potwierdzenie otrzymania produktu.
+6. [Kupujący](#ac2) potwierdza otrzymanie produktu.
+7. System informuje o pomyślnym przekazaniu należności.
 **Scenariusze alternatywne:** 
 
-4.A. Podano niekompletne dane wysyłki lub wysyłka na podany adres jest niemożliwa.
-* 4.A.1. System informuje o błędnie podanych danych.
-* 4.A.2. Przejdź do kroku 2.
+3.A. Podano niekompletne dane wysyłki lub wysyłka na podany adres jest niemożliwa.
+* 3.A.1. System informuje o błędnie podanych danych.
+* 3.A.2. Przejdź do kroku 2.
 
 ---
 <a id="br1"></a>
@@ -107,16 +106,44 @@ Osoba chcąca zakupić produkt na aukcji.
 
 **Scenariusz główny:**
 1. System czeka na ofertę.
-1. [Kupujący](#ac2) zgłasza do systemu prośbę o przebicie aktualnej oferty o daną kwotę.
-2. System weryfikuje czy podana kwota jest większa od aktualnej.
-3. System zamieszcza informację o przebiciu kwoty oraz podaje aktualną cenę oferty.
+2. [Kupujący](#ac2) zgłasza do systemu prośbę o przebicie aktualnej oferty o daną kwotę.
+3. System weryfikuje czy podana kwota jest większa od aktualnej.
+4. System zamieszcza informację o przebiciu kwoty oraz podaje aktualną cenę oferty.
 **Scenariusze alternatywne:** 
 
-2.A. Podano mniejszą lub równą kwotę do aktualnej oferty.
-* 2.A.1. System informuje o błędnej cenie przebicia.
-* 2.A.2. Przejdź do kroku 1.
+3.A. Podano mniejszą lub równą kwotę do aktualnej oferty.
+* 3.A.1. System informuje o błędnej cenie przebicia.
+* 3.A.2. Przejdź do kroku 1.
 
+---
+<a id="br2"></a>
+### BR2: Wygranie aukcji
 
+**Aktorzy:** [Kupujący](#ac2)
+
+**Scenariusz główny:**
+1. System zakończył aukcje z powodu upłynięcia określonego czasu.
+2. System zdejmuję produkt z aukcji.
+3. [Kupujący](#ac2) wygrywa aukcje proponując największą kwotę.
+4. System zapisuje dane zwycięzcy.
+
+---
+<a id="br3"></a>
+### BR3: Przekazanie należności Sprzedającemu
+
+**Aktorzy:** [Sprzedający](#ac1), [Kupujący](#ac2)
+
+**Scenariusz główny:**
+1. System oczekuje na przekazanie pieniędzy.
+2. [Kupujący](#ac2) wysyła daną kwotę za produkt do [Sprzedający](#ac1).
+3. System weryfikuje zgodność przesłanej kwoty z zadeklarowaną kwtotą z aukcji.
+4. System potwierdza operację transakcji i przypisuje [Kupujący](#ac2) jako nowego właściciela.
+**Scenariusze alternatywne:** 
+
+3.A. Wysłano inną kwotę od oczekiwanej.
+* 3.A.1. System informuje o błędnej kwocie przekazanych pieniędzy.
+* 3.A.2. System zwraca pieniądze do [Kupujący](#ac2).
+* 3.A.3. Przejdź do kroku 1.
 
 
 ## Obiewkty biznesowe (inaczje obiekty dziedzinowe lub informatycjne)
@@ -145,9 +172,10 @@ Aukcję wygrywa ten z [Kupujący](#ac2)ch, który w momencie jej zakończenia (u
 ## Macierz CRUDL
 
 
-| Przypadek użycia                                  | Aukcja | Produkt | ... |
-| ------------------------------------------------- | ------ | ------- | --- |
-| UC1: Wystawienia produktu na aukcję               |    C   |    C    | ... |
-| ???                                               |  ...   |  ...    | ... |
-
-
+| Przypadek użycia                                  | Aukcja | Produkt |
+| ------------------------------------------------- | ------ | ------- |
+| UC1: Wystawienia produktu na aukcję               |    C   |    C    |
+| UC2: Złożenie oferty na produkt                   |    U   |   ...   |
+| BR1: Wygranie aukcji                              |    R   |   ...   |
+| BR2: Przekazanie należności Sprzedającemu	        |    R   |   ...   |
+| BR3: Przekazanie produktu Kupującemu              |    R   |    R    |
