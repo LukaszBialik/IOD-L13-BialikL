@@ -80,19 +80,44 @@ Osoba chcąca zakupić produkt na aukcji.
 ---
 
 <a id="uc2"></a>
-### UC2: ...
+### UC2: Przekazanie produktu Kupującemu
 
-**Aktorzy:** [Sprzedający](#ac1), [Kupujący](#ac2), ...
+**Aktorzy:** [Sprzedający](#ac1), [Kupujący](#ac2)
 
 **Scenariusz główny:**
-1. ...
-
+1. System usuwa produkt z aukcji.
+2. System prosi o podanie danych wysyłki.
+3. [Kupujący](#ac2) podaje dane wysyłki.
+4. System weryfikuje poprawność danych.
+5. [Sprzedający](#ac1) wysyła produkt na dany adres.
+6. System czeka na potwierdzenie otrzymania produktu.
+7. [Kupujący](#ac2) potwierdza otrzymanie produktu.
+8. System informuje o pomyślnym przekazaniu należności.
 **Scenariusze alternatywne:** 
 
-1.A. ...
-* 4.A.1. ...
+4.A. Podano niekompletne dane wysyłki lub wysyłka na podany adres jest niemożliwa.
+* 4.A.1. System informuje o błędnie podanych danych.
+* 4.A.2. Przejdź do kroku 2.
 
 ---
+<a id="br1"></a>
+### BR1: Przewyższenie aktualnie najwyższej oferty
+
+**Aktorzy:** [Kupujący](#ac2)
+
+**Scenariusz główny:**
+1. System czeka na ofertę.
+1. [Kupujący](#ac2) zgłasza do systemu prośbę o przebicie aktualnej oferty o daną kwotę.
+2. System weryfikuje czy podana kwota jest większa od aktualnej.
+3. System zamieszcza informację o przebiciu kwoty oraz podaje aktualną cenę oferty.
+**Scenariusze alternatywne:** 
+
+2.A. Podano mniejszą lub równą kwotę do aktualnej oferty.
+* 2.A.1. System informuje o błędnej cenie przebicia.
+* 2.A.2. Przejdź do kroku 1.
+
+
+
 
 ## Obiewkty biznesowe (inaczje obiekty dziedzinowe lub informatycjne)
 
