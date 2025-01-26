@@ -1,0 +1,2 @@
+1. Zoptymalizowałem kod w ten sposób, że funkcja avarageSpendings wywołuje się tylko raz a nie cały czas w pętli przez co zmniejszył się średni czas odpowiedzi.
+2. 2/Sec
