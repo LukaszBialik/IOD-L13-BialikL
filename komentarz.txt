@@ -1,2 +1,2 @@
-1. Zoptymalizowałem kod w ten sposób, że funkcja avarageSpendings wywołuje się tylko raz a nie cały czas w pętli przez co zmniejszył się średni czas odpowiedzi.
-2. 2/Sec
+1. Zoptymalizowałem kod w ten sposób, że funkcja avarageSpendings wywołuje się tylko raz a nie cały czas w pętli przez co zmniejszył się średni czas odpowiedzi(z ok. 2300 na 31 ). A przepustowość z 1.4/sec na 2/sec.
+2. Średnia przepustowość dla założonej przez analityków konfiguracji: 2/Sec. Zwiększając liczbę drukarek do 30 uzyskamy zadawalającą przepustowość ok. 5.8/sec
